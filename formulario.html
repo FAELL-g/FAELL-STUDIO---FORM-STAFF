@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="pt-br"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAELL STUDIO - FORM</title>
+  
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #fff;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .container {
+      background: #1c1c1c;
+      padding: 30px;
+      width: 100%;
+      min-height: 100vh;     /* ocupa altura total */
+      box-sizing: border-box;
+      border-radius: 0;      /* ocupa tudo no mobile */
+    }
+
+    .banner {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .banner img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #5865f2;
+    }
+
+    .banner h1 {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #7289da, #99aab5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      background: #2a2a2a;
+      color: white;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 80px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 25px;
+      background: #5865f2;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #4752c4;
+    }
+
+    .success {
+      text-align: center;
+      margin-top: 15px;
+      color: #43b581;
+      display: none;
+    }
+
+    /* Desktop */
+    @media (min-width: 600px) {
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 600px;
+        border-radius: 15px;
+        min-height: auto;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="banner">
+      <img src="bannerstaff.png" alt="Banner Staff">
+      <h1>📋 FAELL STUDIO - FORM STAFF</h1>
+    </div>
+
+    <form id="staffForm">
+      <label>Seu usuário Discord:</label>
+      <input type="text" id="discord" maxlength="32" placeholder="Ex: faelzinxz_." required="">
+
+      <label>Idade:</label>
+      <input type="number" id="idade" min="14" placeholder="Ex: 16" required="">
+
+      <label>Você já trabalhou com vendas ou atendimento? Se sim, descreva sua experiência:</label>
+      <textarea id="experiencia" minlength="25" placeholder="Descreva sua experiência com vendas/atendimento..." required=""></textarea>
+
+      <label>Como você abordaria um cliente interessado em comprar algum Produto pela primeira vez?</label>
+      <textarea id="abordagem" minlength="25" placeholder="Diga como abordaria o cliente interessado..." required=""></textarea>
+
+      <label>Como abordaria um cliente insatisfeito com o atendimento?</label>
+      <textarea id="resposta" minlength="25" placeholder="Explique em pelo menos 2 linhas..." required=""></textarea>
+
+      <label>Você possui alguma habilidade ou conhecimento adicional que possa contribuir para a FAELL STUDIO? Cite no minimo 3 delas:</label>
+      <textarea id="habilidade" minlength="25" placeholder="Cite no mínimo 3 de suas habilidades... " required=""></textarea>
+
+      <label>Você já está há quanto tempo no servidor?</label>
+      <input type="text" id="tempoServidor" placeholder="Ex: 3 meses" required="">
+
+      <label>O que você faria caso estivesse lidando com alguma discussão no servidor?</label>
+      <textarea id="acaoDiscussoes" minlength="25" placeholder="Descreva como resolveria a situação de forma justa e calma..." required=""></textarea>
+
+      <label>Quais técnicas você usaria para aumentar as vendas semanais dos Produtos?</label>
+      <textarea id="tecnicas" minlength="25" placeholder="Descreva o que faria para aumentar as vendas..." required=""></textarea>
+      
+      <label>Para você o que siginifica Maturidade?</label>
+      <textarea id="maturidade" minlength="25" placeholder="Descreva o que significa maturidade pra você..." required=""></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+    <p class="success" id="successMsg">✅ Formulário enviado com sucesso!</p>
+  </div>
+
+  <script>
+    const webhookURL = "https://discord.com/api/webhooks/1419063685518856263/JD4C4CR69-h2JtYnKnduV9rY7gqtSeoWocpFNJ5Jg6C6YP6KMKfy_mOwfWMRySseqa9Jt"; // coloque seu webhook real
+
+    document.getElementById("staffForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const discord = document.getElementById("discord").value;
+      const idade = document.getElementById("idade").value;
+      const experiencia = document.getElementById("experiencia").value;
+      const abordagem = document.getElementById("abordagem").value;
+      const resposta = document.getElementById("resposta").value;
+      const habilidade = document.getElementById("habilidade").value;
+      const tempoServidor = document.getElementById("tempoServidor").value;
+      const acaoDiscussoes = document.getElementById("acaoDiscussoes").value;
+      const tecnicas = document.getElementById("tecnicas").value;
+      const maturidade = document.getElementById("maturidade").value;
+      
+      const embed = {
+        embeds: [{
+          title: "📋 Nova Resposta de Staff",
+          color: 0x5865F2,
+          fields: [
+            { name: "👤 Nome Discord", value: discord, inline: true },
+            { name: "🎂 Idade", value: idade, inline: true },
+            { name: "🛠 Experiência com vendas e atendimento", value: experiencia },
+            { name: "❓ Abordagem ao cliente interessado", value: motivo },
+            { name: "⚖ Abordagem ao cliente insatisfeito", value: responsabilidade },
+            { name: "🧠 Habilidades", value: maturidade },
+            { name: "⏳ Tempo no servidor", value: tempoServidor },
+            { name: "💬 Como lidaria com discussões", value: acaoDiscussoes },
+            { name: "🛍 Técnicas para aumentar as vendas", value: tecnicas },
+            { name: "⚡ Oque significa maturidade", value: maturidade } 
+          ],
+          timestamp: new Date()
+        }]
+      };
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(embed)
+      }).then(res => {
+        if (res.ok) {
+          document.getElementById("staffForm").reset();
+          document.getElementById("successMsg").style.display = "block";
+        } else {
+          alert("Erro ao enviar o formulário!");
+        }
+      });
+    });
+  </script>
+
+</body></html>
